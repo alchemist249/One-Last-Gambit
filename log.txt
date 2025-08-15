@@ -1,0 +1,975 @@
+2025-07-25 12:50:47 UTC
+macOS-15.3.1-arm64-arm-64bit
+Ren'Py 8.3.7.25031702
+
+Early init took 0.05s
+Loading error handling took 0.04s
+Loading script took 0.28s
+Loading save slot metadata took 0.03s
+Loading persistent took 0.00s
+Running init code took 0.04s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.02s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/amritchetri/Library/RenPy/backups/One Last Gambit':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.03s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.04s
+Running _start took 0.00s
+Interface start took 1.28s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1'
+Version: b'2.1 Metal - 89.3'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 701.76s
+Loading error handling took 0.04s
+Loading script took 0.23s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.11s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.02s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/amritchetri/Library/RenPy/backups/One Last Gambit':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.05s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.03s
+Running _start took 0.00s
+Interface start took 0.42s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1'
+Version: b'2.1 Metal - 89.3'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1169.38s
+Loading error handling took 0.02s
+Loading script took 0.22s
+Loading save slot metadata took 0.03s
+Loading persistent took 0.00s
+Running init code took 0.10s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.01s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/amritchetri/Library/RenPy/backups/One Last Gambit':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.05s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1'
+Version: b'2.1 Metal - 89.3'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1197.00s
+Loading error handling took 0.02s
+Loading script took 0.21s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.11s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/amritchetri/Library/RenPy/backups/One Last Gambit':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.05s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1'
+Version: b'2.1 Metal - 89.3'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/ast.py", line 777, in execute
+    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 455, in apply_arguments
+    return parameters.apply(args or (), kwargs or {}, ignore_errors)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 307, in apply
+    raise TypeError(msg) # from None
+TypeError: missing a required argument: 'enemy_key'
+
+While running game code:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+TypeError: missing a required argument: 'enemy_key'
+Resetting cache.
+Early init took 1210.96s
+Loading error handling took 0.02s
+Loading script took 0.21s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.11s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/amritchetri/Library/RenPy/backups/One Last Gambit':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.05s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.03s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1'
+Version: b'2.1 Metal - 89.3'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1285.45s
+Loading error handling took 0.02s
+Loading script took 0.22s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.10s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/amritchetri/Library/RenPy/backups/One Last Gambit':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.05s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.03s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1'
+Version: b'2.1 Metal - 89.3'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy):
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/ast.py", line 777, in execute
+    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 455, in apply_arguments
+    return parameters.apply(args or (), kwargs or {}, ignore_errors)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 307, in apply
+    raise TypeError(msg) # from None
+TypeError: missing a required argument: 'enemy'
+
+While running game code:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy):
+TypeError: missing a required argument: 'enemy'
+Resetting cache.
+Early init took 1297.88s
+Loading error handling took 0.02s
+Loading script took 0.21s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.11s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/amritchetri/Library/RenPy/backups/One Last Gambit':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.05s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.03s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1'
+Version: b'2.1 Metal - 89.3'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/ast.py", line 777, in execute
+    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 455, in apply_arguments
+    return parameters.apply(args or (), kwargs or {}, ignore_errors)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 307, in apply
+    raise TypeError(msg) # from None
+TypeError: missing a required argument: 'enemy_key'
+
+While running game code:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+TypeError: missing a required argument: 'enemy_key'
+
+Full traceback:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/ast.py", line 777, in execute
+    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 455, in apply_arguments
+    return parameters.apply(args or (), kwargs or {}, ignore_errors)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 307, in apply
+    raise TypeError(msg) # from None
+TypeError: missing a required argument: 'enemy_key'
+
+While running game code:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+TypeError: missing a required argument: 'enemy_key'
+Resetting cache.
+Early init took 1539.89s
+Loading error handling took 0.02s
+Loading script took 0.21s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.11s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/amritchetri/Library/RenPy/backups/One Last Gambit':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.05s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.03s
+Running _start took 0.00s
+Interface start took 0.41s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1'
+Version: b'2.1 Metal - 89.3'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/ast.py", line 777, in execute
+    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 455, in apply_arguments
+    return parameters.apply(args or (), kwargs or {}, ignore_errors)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 307, in apply
+    raise TypeError(msg) # from None
+TypeError: missing a required argument: 'enemy_key'
+
+While running game code:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+TypeError: missing a required argument: 'enemy_key'
+
+Full traceback:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/ast.py", line 777, in execute
+    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 455, in apply_arguments
+    return parameters.apply(args or (), kwargs or {}, ignore_errors)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 307, in apply
+    raise TypeError(msg) # from None
+TypeError: missing a required argument: 'enemy_key'
+
+While running game code:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+TypeError: missing a required argument: 'enemy_key'
+
+Full traceback:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/ast.py", line 777, in execute
+    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 455, in apply_arguments
+    return parameters.apply(args or (), kwargs or {}, ignore_errors)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 307, in apply
+    raise TypeError(msg) # from None
+TypeError: missing a required argument: 'enemy_key'
+
+While running game code:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+TypeError: missing a required argument: 'enemy_key'
+
+Full traceback:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/ast.py", line 777, in execute
+    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 455, in apply_arguments
+    return parameters.apply(args or (), kwargs or {}, ignore_errors)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 307, in apply
+    raise TypeError(msg) # from None
+TypeError: missing a required argument: 'enemy_key'
+
+While running game code:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+TypeError: missing a required argument: 'enemy_key'
+Resetting cache.
+Early init took 1567.54s
+Loading error handling took 0.02s
+Loading script took 0.12s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.10s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.05s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.04s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1'
+Version: b'2.1 Metal - 89.3'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/ast.py", line 777, in execute
+    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 455, in apply_arguments
+    return parameters.apply(args or (), kwargs or {}, ignore_errors)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 307, in apply
+    raise TypeError(msg) # from None
+TypeError: missing a required argument: 'enemy_key'
+
+While running game code:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+TypeError: missing a required argument: 'enemy_key'
+Resetting cache.
+Early init took 1613.22s
+Loading error handling took 0.02s
+Loading script took 0.22s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.11s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.01s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/amritchetri/Library/RenPy/backups/One Last Gambit':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.05s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1'
+Version: b'2.1 Metal - 89.3'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1730.15s
+Loading error handling took 0.02s
+Loading script took 0.24s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+
+The label _call_attack_animation is defined twice, at File "game/script.rpy", line 342:
+    call attack_animation(enemy_key=current_enemy) from _call_attack_animation
+and File "game/script.rpy", line 400:
+        call attack_animation(enemy_key=current_enemy) from _call_attack_animation
+
+DPI scale factor: 1.000000
+Interface start took 0.24s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1'
+Version: b'2.1 Metal - 89.3'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1742.51s
+Loading error handling took 0.05s
+Loading script took 0.34s
+Loading save slot metadata took 0.03s
+Loading persistent took 0.00s
+Running init code took 0.15s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.03s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/amritchetri/Library/RenPy/backups/One Last Gambit':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.06s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.41s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1'
+Version: b'2.1 Metal - 89.3'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1794.65s
+Loading error handling took 0.02s
+Loading script took 0.22s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.11s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.01s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/amritchetri/Library/RenPy/backups/One Last Gambit':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.05s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.03s
+Running _start took 0.00s
+Interface start took 0.43s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1'
+Version: b'2.1 Metal - 89.3'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1840.55s
+Loading error handling took 0.02s
+Loading script took 0.22s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.11s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/amritchetri/Library/RenPy/backups/One Last Gambit':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.05s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.03s
+Running _start took 0.00s
+Interface start took 0.42s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1'
+Version: b'2.1 Metal - 89.3'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.05s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
+Resetting cache.
+Early init took 1943.18s
+Loading error handling took 0.02s
+Loading script took 0.22s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+
+The label _call_attack_animation is defined twice, at File "game/script.rpy", line 342:
+    call attack_animation(enemy_key=current_enemy) from _call_attack_animation
+and File "game/script.rpy", line 400:
+        call attack_animation(enemy_key=current_enemy) from _call_attack_animation
+
+DPI scale factor: 1.000000
+Interface start took 0.25s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1'
+Version: b'2.1 Metal - 89.3'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1949.44s
+Loading error handling took 0.02s
+Loading script took 0.19s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.10s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.01s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/amritchetri/Library/RenPy/backups/One Last Gambit':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.05s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1'
+Version: b'2.1 Metal - 89.3'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1440, 776) drawable=(2880, 1552)
+Maximum texture size: 4096x4096

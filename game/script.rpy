@@ -1,0 +1,938 @@
+﻿define player_name = Character("Player", image="player", window_left_padding=160)
+define a = Character("Knightmare", image="knightmare")
+define b = Character("Phantom", image="phantom")
+define c = Character("Warden", image="warden")
+define f = Character("")
+image player_idle = "player.png" 
+image bg arena = im.Scale("images/bg arena2.png", 1920, 1080)
+image bg grimm = im.Scale("images/bg_grimm.png", 1920, 1080)
+image bg phantom = im.Scale("images/bg_phantom.jpg", 1920, 1080)
+image bg warden = im.Scale("images/bg_warden.jpg", 1920, 1080)
+image bg name = im.Scale("images/d.png", 1920, 1080)
+image enemy_idle = Animation("enemy_idle.png", 0.3, "enemy_idle2.png", 0.3)
+image warden_idle = Animation("warden.png", 1, "warden2.png", 1)
+image side player = "side player face.png"
+
+init python:
+    enemies = {
+        "grimm": {
+            "name": "Grimm",
+            "max_hp": 100,
+            "moves": ["attack", "special", "slash", "attack", "slash"],
+            "sprite": "enemy_idle",
+            "bg": "bg grimm",
+        },
+        "phantom": {
+            "name": "Phantom",
+            "max_hp": 150,
+            "moves": ["dark_blast", "curse", "shadow_step"],
+            "sprite": "phantom.png", 
+            "bg": "bg phantom",
+        },
+        "warden": {
+            "name": "Warden",
+            "max_hp": 200,
+            "moves": ["shield_bash", "fortify", "heavy_slam", "heavy_slam"],
+            "sprite": "warden_idle",  # Replace with your actual image name
+            "bg": "bg warden",
+        },
+    }
+
+transform player_position:
+    xpos 0.25
+    ypos 0.75
+    anchor (0.5, 1.0)
+
+transform enemy_position:
+    xpos 0.75
+    ypos 0.75
+    anchor (0.5, 1.0)
+
+default empowered_attack = False
+default status_effects = []
+default player_hp = 100
+default enemy_hp = 100
+default player_sp = 0
+default enemy_sp = 0
+default battle_phase = "start"
+default one_shot_vulnerable = False
+default player_weakened = False
+default player_actions_disabled = False
+default gambit_uses = 2
+default upgrade_chosen = False
+default counter_multiplier = 1.0
+default player_max_hp = 100
+default base_counter_damage = 20
+
+label start:
+    camera:
+        perspective True
+    scene bg name
+    c "I knew you will be back, don't remember me?"
+    c "You will"
+    "OBJECTIVE-beat all three enemies without dying to beat the game "
+    $ name_input = renpy.input("Enter your name:")
+    $ player_actual_name = (name_input.strip() or "Player").capitalize()
+
+    if player_actual_name.lower() == "amrit":
+        $ dev_mode = True
+    else:
+        $ dev_mode = False
+        window hide
+
+    if dev_mode:
+        $ renpy.notify("Dev mode activated.")
+
+    $ player = Character(player_actual_name, image="player")
+    jump boss1
+
+label boss1:
+    scene bg arena
+    show expression "enemy_idle" 
+    a face "Ah... another child come to play hero."
+    a "Do you think steel and courage alone will save you?"
+
+    "[player_name]" "I don't care what you are. I'm not leaving until you're gone."
+
+    a "Spirited. Naïve."
+    a "I’ve split stronger minds than yours like dry wood."
+
+    "[player_name]" "You talk too much. Afraid of losing?"
+
+    a "Heh. I talk because no one is left to listen."
+    a "And soon... neither will you be."
+
+    "[player_name]" "Then let's shut you up for good."
+
+    a "Come then, little spark. Let’s see how bright you burn."
+    a "I will extinguish your dreams.... "
+    a "Only to experiece eternal knightmare"
+
+    a "Prepare yourself!"
+    $ current_enemy = "grimm"
+    call battle("grimm") from _call_battle
+    call post_boss1_upgrade from _call_post_boss1_upgrade
+    jump boss2
+
+label boss2:
+    scene bg arena
+    show expression "phantom.png"
+    b face "You're not like the others... You actually made it this far."
+
+    "[player_name]" "And I’m not stopping now. Move, or fall."
+
+    b "Hmm. So direct. So predictable."
+    b "Did you really think brute force could breach my design?"
+
+    "[player_name]" "I’ve already torn through worse."
+
+    b "Confidence without calculation. Dangerous... but entertaining."
+
+    "[player_name]" "Keep talking. It won't save you."
+
+    b "Oh, I'm not trying to be saved. I'm simply watching you waste your final moment."
+
+    "[player_name]" "Then watch closely. This is the last mistake you'll ever make."
+
+    b "Foolish... but fascinating. Let the test begin."
+    $ current_enemy = "phantom"
+    call battle("phantom") from _call_battle_1
+    call post_boss2_upgrade from _call_post_boss2_upgrade
+    jump boss3
+
+label boss3:
+    scene bg arena
+    show expression "warden.png"
+    c face "At last... the last ember dares to flicker in my shadow."
+
+    "[player_name]" "I've come too far to stop now. You're the end of this."
+
+    c "End? No... I am what remains when all ends."
+
+    "[player_name]" "Not this time. I’m not afraid of you."
+
+    c "You should be. Fear is the final truth — and I am its voice."
+
+    "[player_name]" "Save your riddles. This ends here."
+
+    c "You still believe you have a choice. How quaint."
+
+    "[player_name]" "I do. And I choose to fight."
+
+    c "Then come, spark. Let me show you what it means to be extinguished."
+    c "The Warden arrives!"
+    $ current_enemy = "warden"
+    call battle("warden") from _call_battle_2
+    jump end
+
+label end:
+    "You beat them all"
+    "Safety of the is restored"
+    "thanks for being part of it"
+    "THANKS FOR PLAYING"
+    c "I know you will be back, next time you're it"
+    "GAME BY AMRIT CHETRI"
+    return
+
+screen battle_ui():
+    tag battle
+    frame:
+        xalign 0.5
+        yalign 0.6
+        has hbox
+        spacing 25
+
+        textbutton "Attack" action Return("attack")
+        textbutton "Defend" action Return("defend")
+        textbutton "Counter" action Return("counter")
+
+        if gambit_uses > 0:
+            textbutton "Gambit":
+                action Return("gambit")
+                background "#0f0"
+        else:
+            textbutton "Gambit":
+                action NullAction()
+                background "#f00"
+
+
+
+# Player HP Bar
+    frame:
+        xpos 0.05
+        ypos 0.05
+        xsize 400
+        ysize 30
+        background "#000"
+        padding (0, 0, 0, 0)
+        has fixed
+
+        bar:
+            xmaximum 400
+            ymaximum 30
+            value max(player_hp, 0)
+            range 100
+            left_bar "#0f0"
+            right_bar "#333"
+            style "bar_no_padding"
+
+    text "[max(player_hp, 0)] / 100":
+        xpos 0.05
+        ypos 0.105
+        size 18
+        color "#0f0"
+        bold True
+
+    # Enemy HP Bar
+    frame:
+        xpos 0.55
+        ypos 0.05
+        xsize 400
+        ysize 30
+        background "#000"
+        padding (0, 0, 0, 0)
+        has fixed
+
+        bar:
+            xmaximum 400
+            ymaximum 30
+            value max(enemy_hp, 0)
+            range enemy_max_hp
+            left_bar "#f00"
+            right_bar "#333"
+            style "bar_no_padding"
+
+    text "[max(enemy_hp, 0)] / [enemy_max_hp]":
+        xpos 0.55
+        ypos 0.105
+        size 18
+        color "#f00"
+        bold True
+
+style bar_no_padding:
+    top_padding 0
+    bottom_padding 0
+    left_padding 0
+    right_padding 0
+    xminimum 0
+    yminimum 0
+
+label battle(enemy_key):
+    $ enemy_data = enemies[enemy_key]
+    $ enemy_name = enemy_data["name"]
+    $ enemy_moves = enemy_data["moves"]
+    $ enemy_hp = enemy_data["max_hp"]
+    $ enemy_max_hp = enemy_data["max_hp"]
+    $ enemy_bg = enemy_data["bg"]
+    $ enemy_sprite = enemy_data["sprite"]
+
+    $ player_hp = 100
+    $ player_sp = 0
+    $ enemy_sp = 0
+    $ burn_active = False
+    $ burn_turns = 0
+    $ figure_a_summoned = False
+    $ figure_c_summoned = False
+    $ figure_b_active = False
+    $ one_shot_vulnerable = False
+    $ player_weakened = False
+    $ player_actions_disabled = False
+    $ gambit_uses = 2
+
+    scene expression enemy_bg
+
+    show player_idle at player_position
+    show expression enemy_sprite at enemy_position
+
+    jump battle_loop
+
+label battle_loop:
+    show screen battle_ui
+    if player_hp <= 0:
+        f "You have fallen..."
+        hide screen battle_ui
+        jump boss1
+    elif enemy_hp <= 0:
+        f "You defeated [enemy_name]!"
+        hide screen battle_ui
+        hide player_idle
+        hide expression enemy_sprite
+        return
+
+    if burn_active:
+        $ burn_dmg = 10
+        $ player_hp -= burn_dmg
+        $ burn_turns -= 1
+        if burn_turns <= 0:
+            $ burn_active = False
+
+    if enemy_hp <= 50 and not figure_a_summoned:
+        call summon_figure_a from _call_summon_figure_a
+
+
+    $ battle_phase = "player"
+    $ result = renpy.call_screen("battle_ui")
+
+    if result == "attack":
+        call player_attack from _call_player_attack
+    elif result == "defend":
+        call player_defend from _call_player_defend
+    elif result == "counter":
+        call player_counter from _call_player_counter
+    elif result == "gambit":
+        call player_gambit from _call_player_gambit
+
+    if enemy_hp <= 0:
+        return
+
+    call enemy_turn from _call_enemy_turn
+    jump battle_loop
+
+label player_attack:
+    $ damage = renpy.random.randint(20, 30)
+
+    if player_weakened:
+        $ damage = int(damage / 2)
+
+    if empowered_attack:
+        $ damage += 50
+        $ status_effects.append("✅ +100 empowered attack used")
+        $ empowered_attack = False 
+    
+    call attack_animation(enemy_key=current_enemy) from _call_attack_animation
+    $ enemy_hp -= damage
+    f "You strike for [damage] damage!"
+    return
+
+label player_defend:
+    if player_weakened:
+        f "You try to defend... but can't!"
+        return
+    $ player_sp += 10
+    return
+
+label player_counter:
+    call player_spin_animation from _call_player_spin_animation
+    $ player_sp += 5
+
+    $ base_counter_damage = 10
+
+    $ counter_damage = int(base_counter_damage * counter_multiplier)
+
+    $ enemy_hp -= counter_damage
+
+    f "You counter fiercely, dealing [counter_damage] damage to [enemy_name]!"
+
+    if enemy_hp <= 0:
+        "[enemy_name] has fallen"
+
+    return
+
+label player_gambit:
+    if gambit_uses <= 0:
+        f "You can't use Gambit anymore!"
+        return
+
+    $ gambit_uses -= 1
+    $ dice = renpy.random.randint(1,6)
+    f "You roll the dice... It's a [dice]!"
+
+    if dice == 1:
+        $ one_shot_vulnerable = True
+        f "A terrible omen... You are now incredibly vulnerable!"
+
+    elif dice == 2:
+        $ player_hp = int(player_hp-20)
+        f "The dice saps your strength... Your HP is drained!"
+
+    elif dice == 3:
+        $ player_weakened = True
+        f "Your balance shifts. Counter and attack do half damage, and you can't defend!"
+
+    elif dice == 4:
+        $ player_hp += 25
+        if player_hp > 100:
+            $ player_hp = 100
+        f "Fortune smiles. You regain 25 HP!"
+
+    elif dice == 5:
+        $ enemy_hp = max(enemy_hp - 30, 0)
+        call attack_animation(enemy_key=current_enemy) 
+        f "A surge of energy! You hit the enemy for 30 damage!"
+        
+
+    elif dice == 6:
+        $ empowered_attack = True
+        $ status_effects.append("🔥 Next attack does +100 damage")
+
+    return
+
+label enemy_turn:
+    $ battle_phase = "enemy"
+
+    if burn_active:
+        $ player_hp -= 3
+
+    if one_shot_vulnerable:
+        $ player_hp = 0
+        f "[enemy_name] strikes... and you drop instantly!"
+        return
+
+    $ move = renpy.random.choice(enemy_moves)
+
+    if move == "attack":
+        call enemy_attack from _call_enemy_attack
+    elif move == "special":
+        call enemy_special from _call_enemy_special
+    elif move == "slash":
+        call enemy_slash from _call_enemy_slash
+    elif move == "dark_blast":
+        call enemy_dark_blast from _call_enemy_dark_blast
+    elif move == "curse":
+        call enemy_curse from _call_enemy_curse
+    elif move == "shadow_step":
+        call enemy_shadow_step from _call_enemy_shadow_step
+    elif move == "shield_bash":
+        call enemy_shield_bash from _call_enemy_shield_bash
+    elif move == "fortify":
+        call enemy_fortify from _call_enemy_fortify
+    elif move == "heavy_slam":
+        call enemy_heavy_slam from _call_enemy_heavy_slam
+
+    return
+
+label enemy_attack:
+    call player_slash_effect from _call_player_slash_effect
+    if result == "defend":
+        $ damage = renpy.random.randint(6, 10)
+    elif result == "counter":
+        $ enemy_hp -= 6
+        $ damage = 0
+    else:
+        $ damage = renpy.random.randint(18, 25)
+    $ player_hp -= damage
+    return
+
+label enemy_special:
+    call ball_attack_effect from _call_ball_attack_effect
+    if result == "counter":
+        $ player_hp -= 50
+    else:
+        $ player_hp -= 40
+    $ enemy_sp = 0
+    return
+
+label enemy_slash:
+    call slash_attack_animation from _call_slash_attack_animation
+    if result == "defend":
+        $ damage = renpy.random.randint(10, 14)
+    elif result == "counter":
+        $ enemy_hp -= 15
+        $ damage = 0
+    else:
+        $ damage = renpy.random.randint(20, 28)
+    $ player_hp -= damage
+    return
+
+label enemy_dark_blast:
+    call animate_ball_scene from _call_animate_ball_scene
+    f "[enemy_name] fires a dark blast!"
+    $ damage = renpy.random.randint(20, 30)
+    $ player_hp -= damage
+    return
+
+label enemy_curse:
+    call player_recover_spin from _call_player_recover_spin
+    f "[enemy_name] Casted a curse..."
+    $ player_sp = max(player_sp - 20, 0)
+    return
+
+label enemy_shadow_step:
+    call camera_zoom_flash from _call_camera_zoom_flash
+    f "[enemy_name] vanishes and reappears!"
+    $ enemy_hp = min(enemy_hp + 20, enemy_max_hp)
+    return
+
+label enemy_shield_bash:
+    call enemy_shield_bash_attack from _call_enemy_shield_bash_attack
+    f "reality crumbles, walls close in"
+    f "[enemy_name] showed you the deapth of abyss!"
+    $ damage = renpy.random.randint(15, 20)
+    $ player_hp -= damage
+    $ player_weakened = True
+    f "You're staggered and feel weaker!"
+    return
+
+label enemy_fortify:
+    call warden_charge_up from _call_warden_charge_up
+    f "[enemy_name] fortifies themselves, reducing your future damage!"
+    $ enemy_sp += 20  
+    return
+
+label enemy_heavy_slam:
+    call attack_sequence from _call_attack_sequence
+    f "[enemy_name] unleashes a heavy slam!"
+    $ damage = renpy.random.randint(25, 35)
+    $ player_hp -= damage
+    return
+
+
+label summon_figure_a:
+    $ figure_a_summoned = True
+    f "Figure A summoned!"
+    $ burn_active = True
+    $ burn_turns = 3
+    return
+
+
+label post_boss1_upgrade:
+    scene black with fade
+    f "You feel a surge of power... A choice lies before you."
+
+    menu:
+        "Choose your upgrade:"
+        
+        "Counter does 2× damage":
+            $ counter_multiplier = 2.0
+            f "Your counter stance now strikes with twice the force!"
+
+        "10 percent chance to Increase your max HP to 150":
+            $ max_hp = 150
+            f "You feel your vitality swell!"
+
+    return
+
+label post_boss2_upgrade:
+    scene black with fade
+    f "You defeated [enemy_name]!"
+    f "Another power awakens within you. Choose carefully..."
+
+    menu:
+        "Choose your upgrade:"
+
+        "50 percent chance of Gambit be used 3 times instead of just 2":
+            $ max_gambit_uses = 4
+            f "You feel reckless energy surge through you... more gambits await."
+
+        "Defend blocks 25 percent of the damage":
+            $ defend_block_percent = 1.0
+            f "You steady yourself — no blow shall pass your guard."
+    
+    return
+
+
+
+label attack_animation(enemy_key="grimm"):
+    window auto hide
+    camera:
+        subpixel True 
+        zpos 0.0 
+        linear 1.05 zpos 0.0 
+
+    show expression enemies[enemy_key]["bg"] as enemy_bg:
+        subpixel True 
+        matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.01) * SaturationMatrix(1.0) * BrightnessMatrix(0.0) * HueMatrix(0.0)
+
+    show player_idle:
+        subpixel True 
+        parallel:
+            radius 942 
+            linear 0.45 radius 1779 
+            linear 0.61 radius 942 
+        parallel:
+            angle 149.35 
+            linear 0.44 angle 115.75 
+            linear 0.01 angle 113.35 
+            linear 0.60 angle 149.35 
+        parallel:
+            zrotate 360.0 
+            linear 0.03 zrotate 414.0 
+            linear 1.00 zrotate 360.0 
+
+    show expression enemies[enemy_key]["sprite"] as enemy_sprite:
+        subpixel True 
+        matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(0.0) * HueMatrix(0.0) 
+        linear 0.44 matrixcolor InvertMatrix(1.0) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(0.36) * HueMatrix(0.0) 
+        linear 0.61 matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(0.01) * HueMatrix(0.0) 
+
+    with Pause(1.16)
+
+    camera:
+        zpos 0.0 
+
+    show player_idle:
+        radius 942 angle 149.35 zrotate 360.0 
+
+    show expression enemies[enemy_key]["sprite"] as enemy_sprite:
+        matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(0.01) * HueMatrix(0.0) 
+
+    return
+
+label slash_attack_animation:
+    window auto hide
+
+
+    show enemy_idle as enemy_sprite:
+        subpixel True 
+        parallel:
+            zrotate -414.0 
+            linear 0.63 zrotate -414.0 
+            linear 0.40 zrotate 0.0 
+        parallel:
+            matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+            linear 0.67 matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(-1940.94, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+            linear 0.32 matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+        parallel:
+            matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.01)*HueMatrix(0.0) 
+            linear 0.30 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.01)*HueMatrix(0.0) 
+
+
+    show player_idle:
+        subpixel True 
+        matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+        linear 0.36 matrixcolor InvertMatrix(0.7)*ContrastMatrix(0.98)*SaturationMatrix(6.35)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+        linear 0.55 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+
+
+    with Pause(1.13)
+
+    show enemy_idle as enemy_sprite:
+        zrotate 0.0
+        matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)
+        matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.01)*HueMatrix(0.0)
+
+    show player_idle:
+        matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0)
+
+    return
+
+label player_slash_effect:
+    window auto hide
+
+    show player_idle:
+        subpixel True 
+        matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+        linear 0.36 matrixcolor InvertMatrix(0.7)*ContrastMatrix(0.98)*SaturationMatrix(6.35)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+        linear 0.55 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+
+    show enemy_idle as enemy_sprite:
+        subpixel True 
+        parallel:
+            matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+            linear 0.35 matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(-954.0, 0.0, 0.0)*RotateMatrix(0.0, -297.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+            linear 0.56 matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+        parallel:
+            xzoom 1.0 
+            linear 0.66 xzoom 3.63 
+            linear 0.26 xzoom 1.0 
+        parallel:
+            yzoom 1.0 
+            linear 0.67 yzoom 2.66 
+            linear 0.25 yzoom 1.0 
+
+    with Pause(1.02)
+
+    show player_idle:
+        matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+
+    show enemy_idle as enemy_sprite:
+        matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)
+        xzoom 1.0
+        yzoom 1.0
+
+    window auto show
+
+    return
+
+label ball_attack_effect:
+    window auto hide
+
+    show player_idle:
+        subpixel True 
+        parallel:
+            alpha 1.0 
+            linear 1.21 alpha 1.01 
+        parallel:
+            matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+            linear 0.67 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+            linear 0.27 matrixcolor InvertMatrix(0.97)*ContrastMatrix(1.02)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+            linear 0.27 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.02)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+
+    show enemy_idle as enemy_sprite:
+        subpixel True 
+        matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.01)*HueMatrix(0.0) 
+        linear 0.30 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(5.65)*BrightnessMatrix(0.01)*HueMatrix(0.0) 
+        linear 1.06 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.01)*HueMatrix(0.0) 
+
+    show ball:
+        default
+        subpixel True 
+        parallel:
+            Null(500.0, 500.0)
+            'ball' with dissolve
+        parallel:
+            zrotate 0.0 
+            linear 0.94 zrotate 13338.0 
+        parallel:
+            matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(297.0, -387.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+            linear 0.30 matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(288.0, -450.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+            linear 0.64 matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(-450.0, -567.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+        parallel:
+            zoom 0.71 
+            linear 0.30 zoom 0.62 
+        parallel:
+            alpha 1.0 
+            linear 0.93 alpha 1.0 
+            linear 0.28 alpha 0.0 
+
+    with Pause(1.46)
+
+    show player_idle:
+        alpha 1.01
+        matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.02)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+
+    show enemy_idle as enemy_sprite:
+        matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.01)*HueMatrix(0.0) 
+
+    show ball:
+        zrotate 13338.0
+        matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(-450.0, -567.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)
+        zoom 0.62
+        alpha 0.0 
+    return
+
+label attack_sequence:
+    window auto hide
+
+    show player_idle:
+        subpixel True 
+        matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+        linear 0.53 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+        linear 0.35 matrixcolor InvertMatrix(0.98)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+        linear 0.30 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+
+    show warden_idle as enemy_sprite:
+        subpixel True 
+        matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+        linear 0.35 matrixtransform ScaleMatrix(1.38, 1.53, 0.99)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+        linear 0.18 matrixtransform ScaleMatrix(1.539622641509434, 1.5232075471698114, 0.99)*OffsetMatrix(-155.88679245283024, -833.6, 0.0)*RotateMatrix(0.0, -12.226415094339625, -18.33962264150944)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+        linear 0.35 matrixtransform ScaleMatrix(1.85, 1.51, 0.99)*OffsetMatrix(-459.0, 63.0, 0.0)*RotateMatrix(0.0, -36.0, -54.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+        linear 0.30 matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+
+    with Pause(1.28)
+
+    show player_idle:
+        matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+
+    show warden_idle as enemy_sprite:
+        matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+
+    return
+
+label enemy_shield_bash_attack:
+    window auto hide
+
+    show player_idle:
+        subpixel True 
+        parallel:
+            matrixtransform ScaleMatrix(1.0, 1.0, 1.0) * OffsetMatrix(0.0, 0.0, 0.0) * RotateMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) 
+            linear 0.28 matrixtransform ScaleMatrix(1.0, 1.0, 1.0) * OffsetMatrix(0.0, 0.0, 0.0) * RotateMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) 
+            linear 0.50 matrixtransform ScaleMatrix(1.0, 1.0, 1.0) * OffsetMatrix(0.0, 1400.0, 0.0) * RotateMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) 
+            linear 0.28 matrixtransform ScaleMatrix(1.0, 1.0, 1.0) * OffsetMatrix(0.0, 0.0, 0.0) * RotateMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) 
+        parallel:
+            matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(0.0) * HueMatrix(0.0) 
+            linear 0.28 matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(0.0) * HueMatrix(0.0) 
+            linear 0.50 matrixcolor InvertMatrix(2.27) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(0.0) * HueMatrix(0.0) 
+            linear 0.26 matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(0.0) * HueMatrix(0.0) 
+            linear 0.02 matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(0.0) * HueMatrix(0.0) 
+
+    show warden_idle as enemy_sprite:
+        subpixel True 
+        matrixtransform ScaleMatrix(1.0, 1.0, 1.0) * OffsetMatrix(0.0, 0.0, 0.0) * RotateMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) 
+        linear 0.28 matrixtransform ScaleMatrix(1.0, 1.0, 1.0) * OffsetMatrix(-999.0, 0.0, 0.0) * RotateMatrix(0.0, 171.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) 
+        linear 0.50 matrixtransform ScaleMatrix(1.0, 1.0, 1.0) * OffsetMatrix(-999.0, 1400.0, 0.0) * RotateMatrix(0.0, 171.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) 
+        linear 0.28 matrixtransform ScaleMatrix(1.0, 1.0, 1.0) * OffsetMatrix(0.0, 0.0, 0.0) * RotateMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) 
+
+    with Pause(1.16)
+
+    show player_idle:
+        matrixtransform ScaleMatrix(1.0, 1.0, 1.0) * OffsetMatrix(0.0, 0.0, 0.0) * RotateMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0)
+        matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(0.0) * HueMatrix(0.0)
+
+    show warden_idle as enemy_sprite:
+        matrixtransform ScaleMatrix(1.0, 1.0, 1.0) * OffsetMatrix(0.0, 0.0, 0.0) * RotateMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0) * OffsetMatrix(0.0, 0.0, 0.0)
+    return
+
+label warden_charge_up:
+
+    window auto hide
+
+    show warden_idle as enemy_sprite:
+        subpixel True 
+        parallel:
+            additive 0.0 blur 0.0 
+            linear 0.59 additive 0.0 blur 0.0 
+        parallel:
+            matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(0.01) * HueMatrix(0.0) 
+            linear 0.59 matrixcolor InvertMatrix(0.0) * ContrastMatrix(2.75) * SaturationMatrix(5.1) * BrightnessMatrix(0.01) * HueMatrix(0.0) 
+            linear 0.48 matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.01) * BrightnessMatrix(0.01) * HueMatrix(0.0) 
+
+    with Pause(1.17)
+
+    show warden_idle as enemy_sprite:
+        additive 0.0 blur 0.0 
+        matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.01) * BrightnessMatrix(0.01) * HueMatrix(0.0) 
+
+    return
+
+label player_recover_spin:
+
+    window auto hide
+
+    show player_idle:
+        subpixel True 
+        parallel:
+            rotate 0.0 
+            blur 0.0 
+            matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(-0.07) * HueMatrix(0.0)
+            linear 0.54 rotate -63.0 blur 3.65 matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(2.81) * BrightnessMatrix(0.54) * HueMatrix(0.0)
+            linear 0.23 rotate 0.0 blur 1.0 matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(0.0) * HueMatrix(0.0)
+        parallel:
+            additive 0.0 
+            linear 0.54 additive 0.0 
+
+    with Pause(0.87)
+
+    show player_idle:
+        rotate 0.0 
+        additive 0.0 
+        blur 1.0 
+        matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(0.0) * HueMatrix(0.0)
+
+    return
+
+label camera_zoom_flash:
+
+    window auto hide
+
+    camera:
+        subpixel True 
+        parallel:
+            xzoom 1.0 
+            linear 0.69 xzoom 13.09 
+            linear 0.23 xzoom 1.0 
+        parallel:
+            matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(0.0) * HueMatrix(0.0) 
+            linear 0.43 matrixcolor InvertMatrix(0.0) * ContrastMatrix(2.58) * SaturationMatrix(1.0) * BrightnessMatrix(0.0) * HueMatrix(0.0) 
+            linear 0.34 matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(0.0) * HueMatrix(0.0) 
+
+    with Pause(1.02)
+
+    camera:
+        xzoom 1.0 
+        matrixcolor InvertMatrix(0.0) * ContrastMatrix(1.0) * SaturationMatrix(1.0) * BrightnessMatrix(0.0) * HueMatrix(0.0)
+
+    return
+
+label animate_ball_scene:
+
+    window auto hide
+
+    show player_idle:
+        subpixel True 
+        matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+        linear 0.51 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+        linear 0.12 matrixcolor InvertMatrix(1.25)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+        linear 0.16 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+
+    show ball:
+        default
+        subpixel True 
+        matrixcolor InvertMatrix(3.23)*ContrastMatrix(1.0)*SaturationMatrix(10.03)*BrightnessMatrix(0.08)*HueMatrix(0.0) 
+        parallel:
+            "ball"
+        parallel:
+            matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(333.0, -1008.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+            linear 0.63 matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(-477.0, -270.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+        parallel:
+            alpha 1.0 
+            linear 0.76 alpha 0.0 
+
+    with Pause(0.89)
+
+    show player_idle:
+        matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+
+    show ball:
+        matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(-477.0, -270.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+        alpha 0.0 
+
+
+    return
+
+label player_spin_animation:
+    window auto hide
+
+    show player_idle:
+        subpixel True 
+        parallel:
+            zrotate 360.0 
+            linear 1.05 zrotate 360.0 
+        parallel:
+            matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+            linear 0.38 matrixtransform ScaleMatrix(1.04, 1.0, 1.0)*OffsetMatrix(-1620.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+            linear 0.38 matrixtransform ScaleMatrix(1.04, 1.0, 1.0)*OffsetMatrix(972.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+            linear 0.29 matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(18.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+        parallel:
+            rotate 0.0 
+            linear 0.38 rotate 81.0 
+            linear 0.67 rotate 0.0 
+
+    with Pause(1.15)
+
+    show player_idle:
+        zrotate 360.0 
+        matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(18.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+        rotate 0.0 
+
+    return

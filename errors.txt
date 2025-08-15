@@ -1,0 +1,12 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+The label _call_attack_animation is defined twice, at File "game/script.rpy", line 342:
+    call attack_animation(enemy_key=current_enemy) from _call_attack_animation
+and File "game/script.rpy", line 400:
+        call attack_animation(enemy_key=current_enemy) from _call_attack_animation
+
+
+Ren'Py Version: Ren'Py 8.3.7.25031702
+Fri Jul 25 18:53:10 2025

@@ -1,0 +1,44 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+TypeError: missing a required argument: 'enemy_key'
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 113, in script call
+    call battle("grimm") from _call_battle
+  File "game/script.rpy", line 165, in script call
+    call battle("warden") from _call_battle_2
+  File "game/script.rpy", line 139, in script call
+    call battle("phantom") from _call_battle_1
+  File "game/script.rpy", line 321, in script call
+    call player_counter from _call_player_counter
+  File "game/script.rpy", line 355, in script call
+    call player_spin_animation from _call_player_spin_animation
+  File "game/script.rpy", line 911, in script
+    label player_spin_animation(enemy_key):
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/ast.py", line 777, in execute
+    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 455, in apply_arguments
+    return parameters.apply(args or (), kwargs or {}, ignore_errors)
+  File "/Users/amritchetri/renpy-8.3.6-sdk/renpy/parameter.py", line 307, in apply
+    raise TypeError(msg) # from None
+TypeError: missing a required argument: 'enemy_key'
+
+macOS-15.3.1-arm64-arm-64bit arm64
+Ren'Py 8.3.7.25031702
+One Last Gambit 1.0
+Fri Jul 25 18:46:56 2025
